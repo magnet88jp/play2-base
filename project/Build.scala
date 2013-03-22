@@ -11,7 +11,9 @@ object ApplicationBuild extends Build {
     // Add your project dependencies here,
     javaCore,
     javaJdbc,
-    javaEbean
+    javaEbean,
+    jdbc,
+    anorm
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
