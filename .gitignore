@@ -13,3 +13,11 @@ dist
 /.project
 /RUNNING_PID
 /.settings
+<<<<<<< HEAD
+=======
+.DS_Store
+bin
+data
+test-result
+modules
+>>>>>>> 66a5c72a09c86b5566629de3caf3316be3c966d6
