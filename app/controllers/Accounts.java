@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
  
 import play.db.ebean.Model.Finder;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -23,6 +24,16 @@ public class Accounts extends Controller {
       msg.append(account.toString()).append("\n");
     }
 //    return ok(msg.toString());
-      return ok(views.html.Account.list.render(msg.toString(), accounts));
+    return ok(views.html.Account.list.render(msg.toString(), accounts));
   }
+
+  public static Result create() {
+    Form<Account> accountForm = new Form(Account.class);
+    return ok(views.html.Account.createForm.render(accountForm));
+  }
+
+  public static Result save() {
+    return ok("It works!");
+  }
+
 }

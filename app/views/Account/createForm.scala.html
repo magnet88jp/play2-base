@@ -1,0 +1,22 @@
+@(accountForm: Form[Account])
+
+@import helper._
+
+@main("create") {
+    
+  <h1>Add a computer</h1>
+
+  @form(routes.Accounts.save()) {
+  <fieldset>
+    @inputText(accountForm("name"), '_label -> "Account name")
+    @inputText(accountForm("createDate"), '_label -> "Create date")
+    @inputText(accountForm("updateDate"), '_label -> "Update date")
+  </fieldset>
+
+  <div class="actions">
+    <input type="submit" value="Create this computer" class="btn primary"> or 
+    <a href="@routes.Accounts.list()" class="btn">Cancel</a> 
+  </div>
+  }
+
+}

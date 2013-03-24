@@ -1,9 +1,21 @@
 @(msg: String, accounts: List[Account])
- 
-<h1>Welcome @msg!</h1>
 
-<ul> 
+@main("Home") {
+
+  <h1>Welcome @msg!</h1>
+
+  <div id="actions">    
+    @helper.form(action=routes.Accounts.list()) {
+        <input type="search" id="searchbox" name="filter" value="currentFilter" placeholder="Filter by computer name...">
+        <input type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
+    }
+    
+    <a class="btn success" id="add" href="@routes.Accounts.create()">Add a new account</a>
+  </div>
+
+  <ul> 
 @for(account <- accounts) {
-  <li>@account.toString()</li>
+    <li>@account.toString()</li>
 } 
-</ul>
+  </ul>
+}
