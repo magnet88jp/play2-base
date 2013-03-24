@@ -9,4 +9,4 @@ GET     /                           controllers.Application.index()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # User
-GET     /accounts                   controllers.Accounts.list()
+GET     /accounts                   controllers.Accounts.list(page:Int ?= 0, orderBy:Int ?= 2, filter ?= "")

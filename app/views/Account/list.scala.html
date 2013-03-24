@@ -1,0 +1,9 @@
+@(msg: String, accounts: List[Account])
+ 
+<h1>Welcome @msg!</h1>
+
+<ul> 
+@for(account <- accounts) {
+  <li>@account.getName()</li>
+} 
+</ul>
