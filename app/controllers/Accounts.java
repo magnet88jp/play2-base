@@ -33,7 +33,7 @@ public class Accounts extends Controller {
   }
 
   public static Result save() {
-    return ok("It works!");
+    return ok("It works!2");
   }
 
 }
