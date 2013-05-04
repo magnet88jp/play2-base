@@ -12,3 +12,10 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /accounts                   controllers.Accounts.list(page:Int ?= 0, orderBy:Int ?= 2, filter ?= "")
 GET     /accounts/new               controllers.Accounts.create
 POST    /accounts                   controllers.Accounts.save
+
+# Edit existing account
+GET     /accounts/:id               controllers.Accounts.edit(id:Long)
+POST    /accounts/:id               controllers.Accounts.update(id:Long)
+
+# Delete a account
+POST    /accounts/:id/delete        controllers.Accounts.delete(id:Long)

@@ -1,0 +1,31 @@
+@(id: Long, accountForm: Form[Account])
+
+@import helper._
+
+@main("edit") {
+    
+    <h1>Edit account</h1>
+    
+    @form(routes.Accounts.update(id)) {
+        
+        <fieldset>
+        
+            @inputText(accountForm("name"), '_label -> "Account name")
+            @inputText(accountForm("createDate"), '_label -> "Create date")
+            @inputText(accountForm("updateDate"), '_label -> "Update date")
+            @inputText(accountForm("versiondate"), '_label -> "version")
+                    
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Save this account" class="btn primary"> or 
+            <a href="@routes.Accounts.list()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Accounts.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Delete this account" class="btn danger">
+    }
+    
+}

@@ -15,7 +15,7 @@
 
   <ul> 
 @for(account <- accounts) {
-    <li>@account.toString()</li>
+    <li>@account.toString()<a href="@routes.Accounts.edit(account.id)">@account.name</a></li>
 } 
   </ul>
 }

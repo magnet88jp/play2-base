@@ -8,6 +8,8 @@ import static play.data.Form.*;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import play.Logger;
+
 import models.Account;
  
 public class Accounts extends Controller {
@@ -45,6 +47,34 @@ public class Accounts extends Controller {
     }
     accountForm.get().save();
     flash("success", "Account " + accountForm.get().name + " has been created");
+    return GO_HOME;
+  }
+
+  public static Result edit(Long id) {
+    Form<Account> accountForm = form(Account.class).fill(
+      Account.find.byId(id)
+    );
+    return ok(
+      views.html.Account.editForm.render(id, accountForm)
+    );
+  }
+
+  public static Result update(Long id) {
+    Logger.info("debug desu2=" + id.toString());
+    
+    Form<Account> accountForm = form(Account.class).bindFromRequest();
+    if(accountForm.hasErrors()) {
+      return badRequest(views.html.Account.editForm.render(id, accountForm));
+    }
+    accountForm.get().update(id);
+    flash("success", "Account " + accountForm.get().name + " has been updated");
+
+    return GO_HOME;
+  }
+
+  public static Result delete(Long id) {
+    Account.find.ref(id).delete();
+    flash("success", "Account has been deleted");
     return GO_HOME;
   }
 
